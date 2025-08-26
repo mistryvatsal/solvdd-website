@@ -1,21 +1,27 @@
-import Head from "next/head";
-import Header from "@components/Header";
-import Footer from "@components/Footer";
-
 export default function Home() {
   return (
-    <div className="container">
-      <Head>
-        <title>Solvdd Technology Solutions</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      {/* Animated Background */}
+      <div className="lines">
+        {/* Lines */}
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
 
-      <main>
-        <Header title="Welcome to Solvdd Technology Solutions" />
-        <p className="description">Solving tomorrow, today!</p>
-      </main>
+        {/* Dots */}
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+      </div>
 
-      <Footer />
-    </div>
+      {/* Content */}
+      <div className="container">
+        <h1>Solvdd Technology Solutions</h1>
+        <p>Solving tomorrow, today!</p>
+        <a href="mailto:contactus@solvdd.com">Contact Us</a>
+      </div>
+    </>
   );
 }
