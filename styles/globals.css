@@ -1,0 +1,157 @@
+/* Reset */
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: #f6f4ef;
+  color: #16140f;
+  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+/* Shared keyframes */
+@keyframes sv-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.55; transform: scale(0.85); }
+}
+@keyframes sv-cursor {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes sv-line-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Kill decorative animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Keyboard focus — ember outline */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #c2502a;
+  outline-offset: 3px;
+}
+
+/* Links inherit color */
+a { color: inherit; }
+
+/* ── Full-bleed / centered-content pattern ───────────────────
+   Outer section: full viewport width, background, borders.
+   .content-inner: caps at 1440px and centers with clamp padding.
+   At ≤1440px the clamp padding acts as the side margin.
+   At >1440px backgrounds still bleed edge-to-edge, content stays put.
+────────────────────────────────────────────────────────────── */
+.content-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: clamp(20px, 5vw, 56px);
+  padding-right: clamp(20px, 5vw, 56px);
+}
+
+/* ── Hero display type — clamp ───────────────────────────── */
+.hero-h1 {
+  font-size: clamp(56px, 11vw, 156px);
+  line-height: 0.92;
+  letter-spacing: clamp(-2.2px, -0.035em, -5px);
+}
+
+/* ── Mobile breakpoint (≤ 480px — matches 390px design spec) ── */
+@media (max-width: 480px) {
+  /* Nav */
+  .nav-outer { border-bottom: 1px solid #e6e1d6; }
+  .nav-inner  { padding-top: 18px !important; padding-bottom: 18px !important; }
+  .nav-links  { display: none !important; }
+  .nav-divider { display: none !important; }
+  .nav-email  { display: none !important; }
+  .nav-status-label { display: none !important; }
+  .nav-status-label-short { display: inline !important; }
+
+  /* Hero: single-column, 56px h1 */
+  .hero-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .hero-h1   { font-size: 56px !important; letter-spacing: -2.2px !important; margin-top: 20px !important; }
+  .hero-cta-col { padding-bottom: 0 !important; margin-top: 32px; }
+  .hero-meta {
+    grid-template-columns: 1fr !important;
+    margin-top: 48px !important;
+    gap: 22px !important;
+  }
+  .meta-cell-desktop { display: none !important; }
+  .meta-cell-mobile  { display: block !important; }
+
+  /* Diagram: hide desktop header + SVG, show mobile versions */
+  .diagram-header       { display: none !important; }
+  .diagram-svg          { display: none !important; }
+  .diagram-header-mobile { display: block !important; }
+  .diagram-mobile-stack  { display: block !important; }
+
+  /* Manifesto: single column */
+  .manifesto-header { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .manifesto-header h2 { font-size: 32px !important; letter-spacing: -0.9px !important; }
+  .manifesto-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    padding: 28px 0 !important;
+  }
+  .manifesto-row > *:nth-child(2) { font-size: 22px !important; letter-spacing: -0.6px !important; }
+  .manifesto-row > *:nth-child(3) { font-size: 14.5px !important; }
+
+  /* Capabilities: single column */
+  .capabilities-header { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .capabilities-header h2 { font-size: 32px !important; letter-spacing: -0.9px !important; }
+  .capabilities-grid { grid-template-columns: 1fr !important; }
+  .cap-card-right {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-right: none !important;
+  }
+
+  /* FamiliarWith */
+  .familiar-grid   { display: none !important; }
+  .familiar-mobile { display: block !important; }
+
+  /* Contact: single column */
+  .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Footer */
+  .footer-inner          { padding-top: 24px !important; padding-bottom: 24px !important; }
+  .footer-copyright      { display: none !important; }
+  .footer-copyright-short { display: inline !important; }
+  .footer-email          { display: none !important; }
+  footer                 { font-size: 10.5px !important; }
+}
+
+/* ── Tablet breakpoint (481px – 900px) ────────────────────── */
+@media (min-width: 481px) and (max-width: 900px) {
+  /* Nav: hide email only */
+  .nav-email { display: none !important; }
+  .nav-links { gap: 18px !important; }
+
+  /* Hero: single-column */
+  .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .hero-meta { grid-template-columns: 1fr 1fr !important; margin-top: 48px !important; }
+
+  /* Manifesto header: single col */
+  .manifesto-header { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .manifesto-row { grid-template-columns: 80px 1fr !important; gap: 24px !important; }
+  .manifesto-row > *:last-child { grid-column: 1 / -1 !important; }
+
+  /* Capabilities: single column */
+  .capabilities-header { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .capabilities-grid { grid-template-columns: 1fr !important; }
+  .cap-card-right { border-left: none !important; padding-left: 0 !important; border-right: none !important; }
+
+  /* Diagram header: single col */
+  .diagram-header { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  /* Contact: single column */
+  .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+}

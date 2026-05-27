@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" fill="#16140f"/>
+  <!-- Slash glyph, centered, Geist Mono-style stroke weight -->
+  <text
+    x="16" y="24"
+    font-family="ui-monospace, 'SF Mono', Menlo, 'Courier New', monospace"
+    font-size="23"
+    font-weight="400"
+    fill="#f6f4ef"
+    text-anchor="middle"
+    dominant-baseline="auto">/</text>
+</svg>
