@@ -4,3 +4,10 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Redirect www → apex so Google sees one canonical URL
+[[redirects]]
+  from = "https://www.solvdd.com/*"
+  to   = "https://solvdd.com/:splat"
+  status = 301
+  force  = true
